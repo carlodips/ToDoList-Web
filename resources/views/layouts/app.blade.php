@@ -18,13 +18,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet">
+
 </head>
 <body>
     @include('includes.navbar')
 
-
     <div class="container-fluid">
-            @yield('content')
+        @yield('content')
     </div>
     
     {{-- Bootstrap  --}}
