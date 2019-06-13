@@ -1,3 +1,7 @@
-@layout('layouts.default')
+@extends('layouts.app')
 
-<h1>Hello</h1>
+
+@section('content')
+    <h1>Hello</h1>
+
+@endsection
