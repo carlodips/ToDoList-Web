@@ -17,4 +17,9 @@ Route::get('/', 'PagesController@index');
 
 Auth::routes();
 
-Route::get('/tasks/all', 'HomeController@dashboard');
+Route::group(['namespace' => 'Tasks', 'prefix' => 'tasks'], function() {
+	Route::get('all', 'TasksController@dashboard');
+	Route::post('store', 'TasksController@store');
+
+
+});
