@@ -1,15 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Tasks;
+namespace App\Http\Controllers\Categories;
 
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
+use App\Categories;
+
 use App\Task;
 
-class TasksController extends Controller
+class CategoriesController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
@@ -18,31 +21,7 @@ class TasksController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function dashboard()
-    {
-        $user = auth()->id();
-        $tasks = Task::where('user_id', $user)->get();
-
-        $cat = array("Default", "Personal", "Work", "Wish List");
-
-        $categories = [];
-        foreach($cat as $category){
-            $categories[$category] = $category;
-        }
-        
-        return view('pages.dashboard')->with('tasks', $tasks)->with('categories', $categories);
-    }
-
-    public function create()
-    {
-        //
     }
 
     /**
@@ -53,20 +32,7 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        //rules
-        $this->validate($request, [
-            'task_name' => 'required',
-            'task_due_date' => 'required',
-            'task_category' => 'required'
-        ]);
-        // Create Task
-        $task = new Task;
-        $task->task_name = $request->input('task_name');
-        $task->task_due_date = $request->input('task_due_date');
-        $task->task_category = $request->input('task_category');
-        $task->user_id = auth()->id();
-        $task->save();
-        return redirect('/')->with('success', 'Task Added');
+        //
     }
 
     /**
@@ -75,9 +41,20 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($category)
     {
-        //
+        $user = auth()->id();
+
+        $tasks = Task::where('user_id', $user)->where('task_category', $category)->get();
+
+        $cat = array("Default", "Personal", "Work", "Wish List");
+
+        $categories = [];
+        foreach($cat as $c){
+            $categories[$c] = $c;
+        }
+
+        return view('pages.category')->with('tasks', $tasks)->with('task_category', $category)->with('categories', $categories);
     }
 
     /**
@@ -113,6 +90,4 @@ class TasksController extends Controller
     {
         //
     }
-
-    
 }

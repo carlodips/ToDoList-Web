@@ -8,7 +8,7 @@
    
     <div class="container-fluid">
         <div id="page-content-wrapper">
-                <h1 class="mt-4">All Tasks <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modalAddTask">Add New Task</button></h1>
+                <h1 class="mt-4">{{ $task_category }}<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modalAddTask">Add New Task</button></h1>
 
                 @if(count($tasks) > 0)
                     @foreach($tasks as $task)
@@ -32,7 +32,9 @@
         </div>
     </div>
 
+    
     @include('includes.add_modal')
+
 
 
     

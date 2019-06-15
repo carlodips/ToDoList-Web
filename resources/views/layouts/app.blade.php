@@ -26,6 +26,9 @@
     <link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet">
 
 
+
+
+
 </head>
 <body>
     @include('includes.navbar')
@@ -38,6 +41,15 @@
         $("#datetimepicker").datepicker({
             format: 'yyyy-mm-dd'
         });
+
+        // //Strikethrough when checked
+        // $(document).ready(function(){
+        //   $("#item_checkbox").click(function(){
+        //     var checkbox = document.getElementById("#item_checkbox");
+        //     alert("checkbox")
+        //   });
+        // });
+
     </script>
 </body>
 </html>

@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Model
+class Category extends Model
 {
-	//table name
-    protected $table = 'tasks';
+    //table name
+    protected $table = 'lists';
 
     //primary key
     public $primaryKey = 'id';
@@ -21,7 +21,6 @@ class Task extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Category');
+        return $this->hasMany('App\Task');
     }
-
 }
