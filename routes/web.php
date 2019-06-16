@@ -20,9 +20,8 @@ Auth::routes();
 Route::group(['namespace' => 'Tasks', 'prefix' => 'tasks'], function() {
 	Route::get('all', 'TasksController@dashboard');
 	Route::post('store', 'TasksController@store');
+	Route::get('{category}', 'CategoriesController@show');
+
 });
 
-Route::group(['namespace' => 'Categories', 'prefix' => 'categories'], function() {
-		Route::get('{category}', 'CategoriesController@show');
-});
 

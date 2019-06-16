@@ -6,7 +6,7 @@
 
 
             @foreach($categories as $category)
-                <a href="/categories/{{$category}}" class="list-group-item list-group-item-action bg-light">{{$category}}</a>
+                <a href="/tasks/{{$category}}" class="list-group-item list-group-item-action bg-light">{{$category}}</a>
             @endforeach
 
 
