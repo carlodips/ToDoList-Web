@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
+use App\Category;
+
 use App\Task;
 
 class TasksController extends Controller
@@ -30,11 +32,18 @@ class TasksController extends Controller
         $user = auth()->id();
         $tasks = Task::where('user_id', $user)->get();
 
-        $cat = array("Default", "Personal", "Work", "Wish List");
+        $cats = Category::where('user_id', $user)->get();
+
+        //default lists
+        $cat_list = array("Default", "Personal", "Work", "Wish List");
+
+        foreach ($cats as $cat) {
+            array_push($cat_list, $cat->category_name);
+        }
 
         $categories = [];
-        foreach($cat as $category){
-            $categories[$category] = $category;
+        foreach($cat_list as $c){
+            $categories[$c] = $c;
         }
         
         return view('pages.dashboard')->with('tasks', $tasks)->with('categories', $categories);

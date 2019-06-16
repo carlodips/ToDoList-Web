@@ -17,7 +17,7 @@
 <!-- /#sidebar-wrapper -->
 
 
-{{-- Add task modal start  --}}
+{{-- Add list modal start  --}}
 <div class="modal fade" id="modalAddList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -27,24 +27,15 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            {!! Form::open(['action' => 'Tasks\TasksController@store', 'method' => 'POST', 'class' => 'form']) !!}
+            {!! Form::open(['action' => 'Tasks\CategoriesController@store', 'method' => 'POST', 'class' => 'form']) !!}
                 <div class="modal-body mx-3">
                     <div class="form-group">
-                        {{Form::label('task_name', 'Task')}}
-                        {{Form::text('task_name', '', ['class' => 'form-control', 'placeholder' => 'Enter task here'])}}
-                    </div>
-                    <div class="form-group">
-                        {{Form::label('task_due_date', 'Due Date')}}
-                        {{Form::text('task_due_date', '', ['class' => 'form-control', 'id' => 'datetimepicker'])}}
-                    </div>
-                    <div class="form-group">
-                        {{Form::label('task_list', 'List')}}
-                        {{Form::select('task_list', $categories, null, ['class' => 'form-control'])}}
-
+                        {{Form::label('category_name', 'List Name')}}
+                        {{Form::text('category_name', '', ['class' => 'form-control', 'placeholder' => 'Enter list name'])}}
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    {{Form::submit('Add Task', ['class' => 'btn btn-primary'])}}
+                    {{Form::submit('Add List', ['class' => 'btn btn-primary'])}}
                 </div>
             {!! Form::close() !!}
         </div>

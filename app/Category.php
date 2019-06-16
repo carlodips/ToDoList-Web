@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     //table name
-    protected $table = 'lists';
+    protected $table = 'categories';
 
     //primary key
     public $primaryKey = 'id';

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
-use App\Categories;
+use App\Category;
 
 use App\Task;
 
@@ -32,7 +32,15 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'category_name' => 'required'
+        ]);
+        $category = new Category();
+        $category->category_name = $request->input('category_name');
+        $category->user_id = auth()->id();
+        $category->save();
+        return redirect('/')->with('success', 'Task Added');
+
     }
 
     /**
@@ -47,10 +55,17 @@ class CategoriesController extends Controller
 
         $tasks = Task::where('user_id', $user)->where('task_category', $category)->get();
 
-        $cat = array("Default", "Personal", "Work", "Wish List");
+        $cats = Category::where('user_id', $user)->get();
+
+        //default lists
+        $cat_list = array("Default", "Personal", "Work", "Wish List");
+
+        foreach ($cats as $cat) {
+            array_push($cat_list, $cat->category_name);
+        }
 
         $categories = [];
-        foreach($cat as $c){
+        foreach($cat_list as $c){
             $categories[$c] = $c;
         }
 
