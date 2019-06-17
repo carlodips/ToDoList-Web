@@ -17,9 +17,16 @@
                                 {!! Form::open() !!}
                                     <input type="checkbox" name="item" id="item_checkbox" value="{{ $task->id }}">
                                     <label for="item_checkbox">{{ $task->task_name }} {{ $task->task_category }} </label>
-                                    <a href="/tasks/edit/{{$task->id }}" class="btn btn-primary float-right" >Edit</a>
                                 {!! Form::close() !!}
+                                
+                                {{-- DELETE BUTTON --}}
+                                {!!Form::open(['action' => ['Tasks\TasksController@destroy', $task->id], 'method' => 'POST', 'class' => 'float-right delete'])!!}
+                                    {{Form::hidden('_method', 'DELETE')}}
+                                    {{Form::submit('Delete', ['class' => 'btn btn-danger float-right'])}}
 
+                                    {{-- EDIT BUTTON --}}
+                                    <a href="/tasks/edit/{{$task->id }}" class="btn btn-primary float-right" >Edit</a>
+                                {!!Form::close()!!}
 
 
         				  	</div>

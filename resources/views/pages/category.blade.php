@@ -17,6 +17,8 @@
                                 {!! Form::open() !!}
                                     <input type="checkbox" name="item" id="item_checkbox" value="{{ $task->id }}">
                                     <label for="item_checkbox"></label>{{ $task->task_name }} {{ $task->task_category }} </label>
+                                    <a href="/tasks/delete/{{$task->id }}" class="btn btn-danger float-right" >Delete</a>
+                                    <a href="/tasks/edit/{{$task->id }}" class="btn btn-primary float-right" >Edit</a>
                                 {!! Form::close() !!}
 
         				  	</div>

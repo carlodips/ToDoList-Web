@@ -54,6 +54,10 @@
         //   });
         // });
 
+        $(".delete").on("submit", function(){
+            return confirm("Are you sure?");
+        });
+
     </script>
 </body>
 </html>

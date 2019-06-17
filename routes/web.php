@@ -22,6 +22,7 @@ Route::group(['namespace' => 'Tasks', 'prefix' => 'tasks'], function() {
 	Route::post('store', 'TasksController@store');
 	Route::get('edit/{id}', 'TasksController@edit');
 	Route::put('update/{id}', 'TasksController@update');
+	Route::delete('destroy/{id}', 'TasksController@destroy');
 	Route::get('{category}', 'CategoriesController@show');
 	Route::post('add_new_list', 'CategoriesController@store');
 
