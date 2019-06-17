@@ -31,12 +31,16 @@
 
 </head>
 <body>
+    @include('sweetalert::alert')
+
     @include('includes.navbar')
 
     <div class="container-fluid">
         @yield('content')
     </div>
     
+
+    <script src="{{ asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
     <script>
         $("#datetimepicker").datepicker({
             format: 'yyyy-mm-dd'

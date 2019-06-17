@@ -39,7 +39,7 @@ class CategoriesController extends Controller
         $category->category_name = $request->input('category_name');
         $category->user_id = auth()->id();
         $category->save();
-        return redirect('/')->with('success', 'Task Added');
+        return redirect('/')->withSuccess('New List Added Successfully!');;
 
     }
 

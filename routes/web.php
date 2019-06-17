@@ -20,6 +20,8 @@ Auth::routes();
 Route::group(['namespace' => 'Tasks', 'prefix' => 'tasks'], function() {
 	Route::get('all', 'TasksController@dashboard');
 	Route::post('store', 'TasksController@store');
+	Route::get('edit/{id}', 'TasksController@edit');
+	Route::put('update/{id}', 'TasksController@update');
 	Route::get('{category}', 'CategoriesController@show');
 	Route::post('add_new_list', 'CategoriesController@store');
 

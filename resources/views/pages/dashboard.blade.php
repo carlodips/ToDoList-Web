@@ -8,7 +8,7 @@
    
     <div class="container-fluid">
         <div id="page-content-wrapper">
-                <h1 class="mt-4">All Tasks <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modalAddTask">Add New Task</button></h1>
+                <h1 class="mt-4">All Tasks <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modalAddTask">Add New Task</button></h1>
 
                 @if(count($tasks) > 0)
                     @foreach($tasks as $task)
@@ -16,8 +16,11 @@
         				  	<div class="card-body">
                                 {!! Form::open() !!}
                                     <input type="checkbox" name="item" id="item_checkbox" value="{{ $task->id }}">
-                                    <label for="item_checkbox"></label>{{ $task->task_name }} {{ $task->task_category }} </label>
+                                    <label for="item_checkbox">{{ $task->task_name }} {{ $task->task_category }} </label>
+                                    <a href="/tasks/edit/{{$task->id }}" class="btn btn-primary float-right" >Edit</a>
                                 {!! Form::close() !!}
+
+
 
         				  	</div>
         				</div>
@@ -33,6 +36,7 @@
     </div>
 
     @include('includes.add_modal')
+
 
 
     
