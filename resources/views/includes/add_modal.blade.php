@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    {{Form::submit('Add Task', ['class' => 'btn btn-primary'])}}
+                    {{Form::submit('Add Task', ['class' => 'btn btn-dark'])}}
                 </div>
             {!! Form::close() !!}
         </div>

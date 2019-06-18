@@ -37,7 +37,7 @@ class TasksController extends Controller
 
         $user_id = auth()->id();
 
-        $tasks = Task::where('user_id', $user_id)->get();
+        $tasks = Task::where('user_id', $user_id)->paginate(5);
 
         $cats = Category::where('user_id', $user_id)->get();
 
@@ -52,9 +52,18 @@ class TasksController extends Controller
         foreach($cat_list as $c){
             $categories[$c] = $c;
         }
+
         
         return view('pages.dashboard')->with('tasks', $tasks)->with('categories', $categories);
     }
+
+    public function save_checkbox(Request $request){
+
+        $id = $request::get("id");
+        echo $id;
+
+    }
+
 
     public function create()
     {

@@ -53,7 +53,7 @@ class CategoriesController extends Controller
     {
         $user = auth()->id();
 
-        $tasks = Task::where('user_id', $user)->where('task_category', $category)->get();
+        $tasks = Task::where('user_id', $user)->where('task_category', $category)->paginate(5);
 
         $cats = Category::where('user_id', $user)->get();
 

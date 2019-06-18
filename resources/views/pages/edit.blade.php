@@ -25,7 +25,7 @@
 
 	                    </div>
 		                <div class="d-flex justify-content-center">
-		                    {{Form::submit('Edit Task', ['class' => 'btn btn-primary'])}}
+		                    {{Form::submit('Edit Task', ['class' => 'btn btn-success'])}}
 		                </div>
 		            {!! Form::close() !!}
 	        		
